@@ -22,16 +22,6 @@ public class MainController {
         return "/ : " + taskNumber; 
     }
 
-    @PostMapping("")
-    public String postSchedule() {
-        return "일정 작성하기";
-    }
-
-    @PatchMapping("/{taskNumber}")
-    public String patchSchedule() {
-        return "일정 수정하기";
-    }
-
     @DeleteMapping("/{taskNumber}")
     public String deleteSchedule() {
         return "일정 삭제하기";
@@ -47,6 +37,18 @@ public class MainController {
             createSchedule.getExplanation() + 
             createSchedule.getDate() + 
             createSchedule.getTime() + "을 작성해 주세요.";
+    }
+
+    @PatchMapping
+    public String editschedule(
+        @RequestBody PostReuqestBodyDto editschedule
+    ) {
+        return "일정 수정하기는 " + 
+            editschedule.getSchedule() + 
+            editschedule.getCategory() + 
+            editschedule.getExplanation() + 
+            editschedule.getDate() + 
+            editschedule.getTime() + "수정되었습니다.";
     }
 
 }
